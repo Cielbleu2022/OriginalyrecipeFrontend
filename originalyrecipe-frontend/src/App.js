@@ -1,12 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
-import UtilisateurComponent from "./Components/UtilisateurComponent";
 import React from "react";
+import UtilisateurForm from "./Components/UtilisateurForm/UtilisateurFormAdd";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import UtilisateurFormGetAll from "./Components/UtilisateurForm/UtilisateurFormGetAll";
 
 function App() {
   return (
     <div className="App">
-      <UtilisateurComponent />
+        <UtilisateurForm/>
+        <UtilisateurFormGetAll/>
+
+
+
     </div>
   );
 }
