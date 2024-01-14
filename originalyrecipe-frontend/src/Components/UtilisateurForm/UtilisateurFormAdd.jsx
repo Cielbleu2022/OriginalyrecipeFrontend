@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-const UtilisateurForm = () => {
+const UtilisateurForm = ({setSuccess}) => {
     const [user, setUser] = useState({
         nom: '',
         prenom: '',
@@ -11,7 +10,6 @@ const UtilisateurForm = () => {
         motDePasse: '',
     });
 
-    const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
@@ -33,7 +31,6 @@ const UtilisateurForm = () => {
 
             if (response.ok) {
                 console.log('Utilisateur ajouté avec succès !');
-                setSuccessMessage('Utilisateur ajouté avec succès !');
                 // Réinitialise le formulaire en remettant l'état local à zéro
                 setUser({
                     nom: '',
@@ -45,7 +42,7 @@ const UtilisateurForm = () => {
                 });
                 // Réinitialise le message d'erreur
                 setErrorMessage('');
-
+                setSuccess("ok");
             } else {
                 console.log('Erreur lors de l\'ajout de l\'utilisateur');
                 setErrorMessage('Erreur lors de l\'ajout de l\'utilisateur. Veuillez réessayer.');
@@ -57,8 +54,7 @@ const UtilisateurForm = () => {
                     mail: '',
                     motDePasse: '',
                 });
-                // Réinitialise le message de succès
-                setSuccessMessage('');
+
             }
         } catch (error) {
             console.error('Erreur lors de la requête HTTP :', error);
@@ -70,7 +66,6 @@ const UtilisateurForm = () => {
         <div className="card mt-5">
             <div className="card-body">
                 <h2 className="card-title">Formulaire d'Utilisateur</h2>
-                {successMessage && <div className="alert alert-success">{successMessage}</div>}
                 {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
