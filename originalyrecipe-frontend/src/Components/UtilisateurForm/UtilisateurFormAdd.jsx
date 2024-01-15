@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-const UtilisateurForm = ({setSuccess}) => {
+
+const UtilisateurForm = ({ setSuccess }) => {
     const [user, setUser] = useState({
         nom: '',
         prenom: '',
@@ -31,7 +32,6 @@ const UtilisateurForm = ({setSuccess}) => {
 
             if (response.ok) {
                 console.log('Utilisateur ajouté avec succès !');
-                // Réinitialise le formulaire en remettant l'état local à zéro
                 setUser({
                     nom: '',
                     prenom: '',
@@ -40,7 +40,6 @@ const UtilisateurForm = ({setSuccess}) => {
                     mail: '',
                     motDePasse: '',
                 });
-                // Réinitialise le message d'erreur
                 setErrorMessage('');
                 setSuccess("ok");
             } else {
@@ -54,7 +53,6 @@ const UtilisateurForm = ({setSuccess}) => {
                     mail: '',
                     motDePasse: '',
                 });
-
             }
         } catch (error) {
             console.error('Erreur lors de la requête HTTP :', error);
@@ -101,13 +99,12 @@ const UtilisateurForm = ({setSuccess}) => {
                             Date de Naissance
                         </label>
                         <input
-                            type="text"
+                            type="date"
                             className="form-control"
                             id="dateDeNaissance"
                             name="dateDeNaissance"
                             value={user.dateDeNaissance}
                             onChange={handleChange}
-                            placeholder="Date de Naissance"
                         />
                     </div>
                     <div className="mb-3">
@@ -152,8 +149,6 @@ const UtilisateurForm = ({setSuccess}) => {
                             placeholder="Mot de Passe"
                         />
                     </div>
-
-
                     <button type="submit" className="btn btn-primary">
                         Soumettre
                     </button>

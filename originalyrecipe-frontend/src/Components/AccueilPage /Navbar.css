@@ -1,0 +1,25 @@
+/* Navbar.css */
+
+/* Style pour positionner Inscription et Connexion au coin droit */
+.navbar-nav.right-corner {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* Navbar.css */
+
+/* Style pour les liens de la barre de navigation */
+.nav-link {
+    font-size: 1rem;
+    margin-right: 1rem; /* Marge entre les liens */
+    transition: font-size 0.3s, color 0.3s; /* Ajoutez une transition pour un effet plus fluide */
+}
+
+/* Style pour le survol des liens de la barre de navigation */
+.nav-link:hover {
+    font-size: 1.1rem; /* Augmente légèrement la taille du texte au survol */
+    color: blue; /* Change la couleur du texte en bleu au survol */
+}
+
+/* Ajoutez des styles supplémentaires selon vos besoins */

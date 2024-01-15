@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const UtilisateurDelete = () => {
+const UtilisateurDelete = ({ onDeleteSuccess, onDeleteError }) => {
     const [userId, setUserId] = useState('');
     const [successMessage, setSuccessMessage] = useState(null);
     const [error, setError] = useState(null);
@@ -17,11 +17,13 @@ const UtilisateurDelete = () => {
                 }
                 setSuccessMessage('Utilisateur supprimé avec succès.');
                 setError(null);
+                onDeleteSuccess(); // Appel de la fonction de succès
             })
             .catch(error => {
                 console.error('Erreur lors de la suppression de l\'utilisateur :', error);
                 setSuccessMessage(null);
                 setError('Erreur lors de la suppression de l\'utilisateur. Veuillez réessayer.');
+                onDeleteError(error.message); // Appel de la fonction d'erreur avec le message
             });
     };
 

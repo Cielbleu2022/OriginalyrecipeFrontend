@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const UtilisateurUpdateForm = ({ utilisateurId }) => {
+const UtilisateurUpdateForm = ({ utilisateurId, onUpdateSuccess, onUpdateError }) => {
     const [mail, setMail] = useState('');
     const [pays, setPays] = useState('');
-    const [error, setError] = useState(null);
-    const [successMessage, setSuccessMessage] = useState(null);
 
     const handleUpdate = () => {
-        // Vérifiez que les champs obligatoires (mail, pays) sont remplis
         if (!mail || !pays) {
-            setError('Veuillez remplir tous les champs obligatoires.');
+            onUpdateError('Veuillez remplir tous les champs obligatoires.');
             return;
         }
-        // Effectuez la requête de mise à jour vers votre API
+
         fetch(`http://localhost:8080/utilisateur/update?idUtilisateur=${utilisateurId}`, {
-            method: 'PATCH', // Utilisez PATCH ou PUT en fonction de votre API
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -31,13 +28,14 @@ const UtilisateurUpdateForm = ({ utilisateurId }) => {
                 return response.json();
             })
             .then(data => {
-                setSuccessMessage('Utilisateur mis à jour avec succès.');
-                setError(null);
+                onUpdateSuccess();
+                // Réinitialise les champs après une mise à jour réussie
+                setMail('');
+                setPays('');
             })
             .catch(error => {
                 console.error('Erreur lors de la mise à jour utilisateur :', error);
-                setError('Erreur lors de la mise à jour de l\'utilisateur. Veuillez réessayer.');
-                setSuccessMessage(null);
+                onUpdateError('Erreur lors de la mise à jour de l\'utilisateur. Veuillez réessayer.');
             });
     };
 
@@ -53,18 +51,6 @@ const UtilisateurUpdateForm = ({ utilisateurId }) => {
             <button className="btn btn-primary" onClick={handleUpdate}>
                 Mettre à jour
             </button>
-
-            {error && (
-                <div className="alert alert-danger mt-3" role="alert">
-                    {error}
-                </div>
-            )}
-
-            {successMessage && (
-                <div className="alert alert-success mt-3" role="alert">
-                    {successMessage}
-                </div>
-            )}
         </div>
     );
 };
