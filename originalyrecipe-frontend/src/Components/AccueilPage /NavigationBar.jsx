@@ -37,7 +37,7 @@ const NavigationBar = () => {
                     </div>
 
                     {/* Barre de recherche collée à la NavigationBar */}
-                    <div className="bg-light">
+                    <div className="bg-light" onChange={()=>navigate("/recherche")}>
                         <input type="text" className="form-control" placeholder="Rechercher..." />
                     </div>
                 </div>

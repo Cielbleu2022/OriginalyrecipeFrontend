@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavigationBar from "./Components/AccueilPage /NavigationBar";
 import Accueil from "./Components/AccueilPage /Accueil";
 import Inscription from "./Components/AccueilPage /Inscription";
+import Recherche from "./Components/AccueilPage /Recherche";
 
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
                 <Routes>
                     <Route path="/accueil" element={<Accueil />} />
                     <Route path="/inscription" element={<Inscription />} />
+                    <Route path="/recherche" element={<Recherche />} />
                 </Routes>
             </div>
         </Router>
