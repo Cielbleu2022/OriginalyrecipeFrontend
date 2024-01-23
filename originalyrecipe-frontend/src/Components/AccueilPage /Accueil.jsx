@@ -1,12 +1,11 @@
 // Accueil.js
-import React from 'react';
-import NavigationBar from "./Navigationbar";
+import React from 'react'
 import './Navbar.css';
+import UtilisateurFormGetAll from "../UtilisateurForm/UtilisateurFormGetAll";
 const Accueil = () => {
     return (
         <div>
-            {/* Le reste du contenu de la page va ici */}
-            <NavigationBar/>
+            <UtilisateurFormGetAll/>
         </div>
     );
 };

@@ -22,4 +22,29 @@
     color: blue; /* Change la couleur du texte en bleu au survol */
 }
 
+
+.form-control {
+    /* Styles pour la barre de recherche */
+    width: 300px; /* Ajustez la largeur en fonction de vos préférences */
+    margin-top: 8px; /* Ajustez la marge en fonction de vos préférences */
+    margin-bottom: 8px; /* Ajustez la marge en fonction de vos préférences */
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bg-light {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* Ajustez la marge en fonction de vos préférences */
+    order: -1; /* Met la barre de recherche en premier dans l'ordre d'affichage */
+}
+
+
+
+
+
 /* Ajoutez des styles supplémentaires selon vos besoins */

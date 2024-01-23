@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UtilisateurUpdateForm from "./UtilisateurFormUpdate";
 import UtilisateurFormAdd from "./UtilisateurFormAdd";
+import { useParams, Outlet } from 'react-router-dom';
 
 const UtilisateurFormGetAll = () => {
     const [utilisateurs, setUtilisateurs] = useState([]);

@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import UtilisateurFormGetAll from "./Components/UtilisateurForm/UtilisateurFormGetAll";
-import UtilisateurFormSearchById from "./Components/UtilisateurForm/UtilisateurFormSearchById";
-import UtilisateurFormSearchByName from "./Components/UtilisateurForm/UtilisateurFormSearchByName";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavigationBar from "./Components/AccueilPage /NavigationBar";
 import Accueil from "./Components/AccueilPage /Accueil";
+import Inscription from "./Components/AccueilPage /Inscription";
 
 
-function App() {
-  return (
-    <div className="App">
-        <Accueil/>
-        <UtilisateurFormGetAll/>
-        <UtilisateurFormSearchById/>
-        <UtilisateurFormSearchByName/>
-
-
-
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <div className="App">
+                <NavigationBar />
+                <Routes>
+                    <Route path="/accueil" element={<Accueil />} />
+                    <Route path="/inscription" element={<Inscription />} />
+                </Routes>
+            </div>
+        </Router>
+    );
+};
 
 export default App;
