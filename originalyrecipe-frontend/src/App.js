@@ -1,20 +1,19 @@
+// App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import NavigationBar from "./Components/AccueilPage /NavigationBar";
 import Accueil from "./Components/AccueilPage /Accueil";
-import Inscription from "./Components/AccueilPage /Inscription";
-import Recherche from "./Components/AccueilPage /Recherche";
+
+
 
 
 const App = () => {
     return (
         <Router>
-            <div className="App">
-                <NavigationBar />
+            <div>
+                <h1>Mon Application React</h1>
                 <Routes>
-                    <Route path="/accueil" element={<Accueil />} />
-                    <Route path="/inscription" element={<Inscription />} />
-                    <Route path="/recherche" element={<Recherche />} />
+                    <Route path="/login" element={<Accueil />} />
+                    {/* Ajoutez une route pour Accueil ici si nécessaire */}
                 </Routes>
             </div>
         </Router>

@@ -43,22 +43,27 @@ const UtilisateurFormGetAll = () => {
             .catch(error => console.error('Erreur lors de la suppression de l\'utilisateur :', error));
     };
 
-    const handleAdd = () => {
+    const handleAdd = (status) => {
         setSuccessMessageVisible(true);
 
         // Masquer le message de succès après 3 secondes
         setTimeout(() => {
             setSuccessMessageVisible(false);
             toggleAddForm();
-            // Mettez à jour la liste des utilisateurs après l'ajout
-            fetchUsers();
+            // Mettez à jour la liste des utilisateurs après l'ajout si le statut est "ok"
+            if (status === "ok") {
+                fetchUsers();
+            }
         }, 3000);
     };
+
+
 
     const handleUpdateSuccess = () => {
         // Mettez à jour la liste des utilisateurs après la mise à jour
         fetchUsers();
         setSuccessMessageVisible(true);
+
 
         // Masquer le message de succès après 3 secondes
         setTimeout(() => {
@@ -80,7 +85,7 @@ const UtilisateurFormGetAll = () => {
 
     useEffect(() => {
         fetchUsers(); // Appel initial pour charger les utilisateurs
-    }, [utilisateurs]); // Ajout de utilisateurs comme dépendance
+    }, []); // Aucune dépendance ici pour éviter la boucle infinie
 
     return (
         <div className="container mt-5">

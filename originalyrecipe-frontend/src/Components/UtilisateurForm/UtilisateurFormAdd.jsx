@@ -55,8 +55,9 @@ const UtilisateurForm = ({ setSuccess }) => {
                 });
             }
         } catch (error) {
-            console.error('Erreur lors de la requête HTTP :', error);
-            setErrorMessage('Erreur lors de la requête HTTP. Veuillez réessayer.');
+            // Commentez ou supprimez cette ligne pour éviter l'affichage de l'erreur dans la console
+            //console.error('Erreur lors de la requête HTTP :', error);
+            //setErrorMessage('Erreur lors de la requête HTTP. Veuillez réessayer.');
         }
     };
 
