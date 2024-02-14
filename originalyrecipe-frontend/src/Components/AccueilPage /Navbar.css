@@ -33,6 +33,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+
 }
 
 .bg-light {
@@ -43,8 +44,16 @@
     order: -1; /* Met la barre de recherche en premier dans l'ordre d'affichage */
 }
 
-
-
-
-
 /* Ajoutez des styles supplémentaires selon vos besoins */
+/* Navbar.css */
+/* Navbar.css */
+.login-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Cela assure que le formulaire est centré verticalement sur l'écran */
+    margin-top: 60px; /* Ajustez cette valeur selon la hauteur de votre barre de navigation */
+}
+
+
+

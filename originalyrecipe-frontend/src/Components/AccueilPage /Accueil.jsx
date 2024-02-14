@@ -4,8 +4,8 @@ import UtilisateurFormGetAll from "../UtilisateurForm/UtilisateurFormGetAll";
 import {useState} from "react";
 import NavigationBar from "./NavigationBar";
 
-const Accueil = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+const Accueil = ({isLoggedInProp}) => {
+    const [isLoggedIn, setIsLoggedIn] = useState(isLoggedInProp);
 
     const handleLogin = async () => {
         try {
@@ -50,15 +50,18 @@ const Accueil = () => {
     };
 
 
-    const handleLoginSuccess = () => {
+    const handleLoginSuccess = (loginInfo) => {
+        console.log(loginInfo)
         setIsLoggedIn(true);
     };
 
-    console.log('isLoggedIn:', isLoggedIn);
+
+
 
     return (
         <div>
-            {isLoggedIn ? (
+            {isLoggedIn && "Welcome To Accueil"}
+            {/*isLoggedIn ? (
                 <div>
                     <h2>Accueil</h2>
                     <button onClick={handleLogout}>Se déconnecter</button>
@@ -66,7 +69,7 @@ const Accueil = () => {
                 </div>
             ) : (
                 <LoginForm onLoginSuccess={handleLoginSuccess} />
-            )}
+            )*/}
         </div>
     );
 };

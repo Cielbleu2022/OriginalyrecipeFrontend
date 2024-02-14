@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-const UtilisateurFormSearchByName = () => {
+const UtilisateurFormSearchByName = ({ onSearch }) => {
     const [userName, setUserName] = useState('');
-    const [userData, setUserData] = useState(null);
     const [error, setError] = useState(null);
 
     const handleSearch = () => {
@@ -17,13 +14,12 @@ const UtilisateurFormSearchByName = () => {
                 }
             })
             .then(data => {
-                setUserData(data);
+                onSearch(data); // Remonte les résultats au composant parent
                 setError(null);
             })
             .catch(error => {
                 console.error('Erreur lors de la recherche utilisateur par nom :', error);
-                setUserData(null);
-                setError('Erreur lors de la recherche utilisateur par nom. Veuillez réessayer.');
+                onSearch(null, error.message); // Remonte l'erreur au composant parent
             });
     };
 
@@ -44,35 +40,6 @@ const UtilisateurFormSearchByName = () => {
             {error && (
                 <div className="alert alert-danger mt-3" role="alert">
                     {error}
-                </div>
-            )}
-
-            {/* Affiche les données de l'utilisateur si elles sont disponibles */}
-            {userData && (
-                <div>
-                    <h2>Résultat de la recherche :</h2>
-
-                    {/* Tableau pour afficher les détails de l'utilisateur */}
-                    <table className="table table-bordered mt-3">
-                        <thead>
-                        <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Prénom</th>
-                            <th scope="col">Mail</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        {userData.map((user, index) => (
-                            <tr key={index}>
-                                <td>{user.nom}</td>
-                                <td>{user.prenom}</td>
-                                <td>{user.mail}</td>
-                            </tr>
-                        ))}
-                        </tbody>
-
-                    </table>
                 </div>
             )}
         </div>
